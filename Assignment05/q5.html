@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Movement</title>
+</head>
+
+<body>
+    <div style="position: absolute; margin-top: -200px;">
+        <img id="car" src="car" alt="Car Image" style="height:100px; width:200px">
+    </div>
+    <div style="position: relative; margin-top: 250px; ">
+        <hr style="margin-left: 5px;height: 10px; background-color:black; width: 800px;">
+        X-Axis: <input type="number" id="x" readonly>
+        <br><br>
+        Y-Axis: <input type="number" id="y" readonly>
+        <br><br>
+        <button type="button" onclick="doSomething()">Start</button>
+        <button type="button" onclick="stop()">Stop</button>
+        <br>
+    </div>
+
+    <script>
+        var counter = 0;
+        var b = 0;
+        var s;
+        var a = document.getElementById("car");
+
+        function doSomething() {
+            s = window.setInterval(run, 100);
+        }
+
+        function run() {
+            counter = counter + 10;
+            var aa = document.getElementById("x");
+            var yy = document.getElementById("y");
+            aa.value = counter;
+
+            if (counter < 820) {
+                a.style.marginLeft = counter + "px";
+            } else {
+                b = b + 10;
+                yy.value = b;
+                a.style.marginTop = b + "px";
+                a.style.rotate = "60deg";
+            }
+        }
+
+        function stop() {
+            window.clearInterval(s);
+            console.log("Car stopped at X:", counter, "Y:", b);
+        }
+    </script>
+</body>
+
+</html>
